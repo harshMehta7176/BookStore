@@ -1,0 +1,82 @@
+<!-- <body bgcolor = teal>
+  {% for i in data.values %}
+   {{i.name}}:{{i.qty}}<br>
+   {{i.id}}
+  {% endfor %}
+  </body> -->
+
+  
+  <!doctype html>
+  <html lang="en">
+    <head>
+      {% load static %}
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+      <title>MY ORDERS!!</title>
+      <style>
+        .outer{
+          height: 100%;
+          width: 100%;
+          padding: 50px;
+          padding-left: 100px;
+          background-color: antiquewhite;
+        }
+        .flex{
+          display: flex;
+        }
+
+        .inner{
+          display: flex;
+          height: 200px;
+          width:700px;
+          border: 1px solid brown;
+          padding: 20px;
+        }
+
+        .sum{
+          height: 50px;
+          width: 700px;
+          border: 2px solid gray;
+          padding: 10px;
+          background-color: rgb(158, 214, 218);
+        }
+      </style>
+ 
+ 
+    </head>
+    <body>
+      <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="{% static './imgs/' %}cart.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            <b>MY ORDERS</b>
+            <hr>
+          </a>
+        </div>
+      </nav>
+      <hr>
+    
+      <div class="outer">
+        {% for i in data.values %}
+        <div class="inner">
+            <img  style=" height: 100px; width: 80px; border: 2px solid black;" src="{% static './imgs/' %}{{i.id}}.jpg" alt="">
+            <div style="height: 200px; width: 400px; margin-left: 20px;"><b>{{i.name}}</b>
+              <div style="height: 30px; width: 100px; border:1px solid black;background-color: rgb(140, 180, 180);margin-bottom: -16px;">Qty-{{i.qty}}</div><br>
+              <div style="height: 30px; width: 100px; border:1px solid black;background-color: rgb(195, 230, 230);margin-bottom: -16px;">${{i.price}}</div><br>
+              <i style="font-size: small;">{{i.desc}}</i>
+            </div>
+          </div>
+          <br>
+          {% endfor %}
+          
+        <br><br>
+        <div class="sum">TOTAL PAYABLE AMOUNT : {{sum}}</div>
+    </div>
+      
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+  </html>
